@@ -1,0 +1,1 @@
+gs -sDEVICE=pdfwrite -dDEVICEWIDTHPOINTS=2592 -dDEVICEHEIGHTPOINTS=2592 -o testing.pdf spiral.ps
