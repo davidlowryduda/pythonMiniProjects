@@ -1,9 +1,18 @@
 
+# python
+
 *.pyc
 *.pyo
+
+
+# cpp files
+
+*.out
+
+
+# etc
+
 *.save
 *.rem
 *.ps
 *.pdf
-
-
