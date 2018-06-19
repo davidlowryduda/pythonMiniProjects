@@ -2,7 +2,8 @@
  * Sample Use
  * ==========
  *
- * echo -e "3d6\n10d13\n2d5" | python 384.py
+ * g++ -std=c++14 384.cpp
+ * echo -e "3d6\n10d13\n2d5" | a.out
  *
  *
  * Description
