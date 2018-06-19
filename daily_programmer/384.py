@@ -2,7 +2,7 @@
 Sample Use
 ==========
 
-echo -e "3d6\n10d13\n2d5" | python 384.py
+echo -e "3d6\n10d13\n2d5" | python3 384.py
 
 
 Description
@@ -106,37 +106,38 @@ enter.
 
 import random
 import sys
+from typing import Tuple, List, Union
 
 class Die:
-    def __init__(self, sides):
+    def __init__(self, sides : int) -> None:
         self.sides = sides
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.sides)
 
-    def roll(self):
+    def roll(self) -> int:
         return random.randint(1, self.sides)
 
 
-def parse_dice_string(dice_string):
+def parse_dice_string(dice_string : str) -> Tuple[int, int]:
     """Given nds, interpret this as n `num_dice` with `s` sides."""
     num_dice, _, sides = dice_string.partition("d")
     return (int(num_dice), int(sides))
 
 
 class DiceBag:
-    def __init__(self, dice_string):
+    def __init__(self, dice_string : str) -> None:
         self.num_dice, self.sides = parse_dice_string(dice_string)
         self.dice = [Die(self.sides) for _ in range(self.num_dice)]
 
-    def roll(self):
+    def roll(self) -> List[int]:
         self.roll_result = list(map(lambda die: die.roll(), self.dice))
         return self.roll_result
 
-    def sum(self):
+    def sum(self) -> int:
         return sum(self.roll_result)
 
-    def print_roll(self, newroll=True):
+    def print_roll(self, newroll: bool = True):
         if newroll:
             self.roll()
         print(str(self.sum()) +
@@ -149,7 +150,7 @@ def parse_input():
     if not input_dice:
         print("No input detected. Terminating.")
         return
-    map(lambda dicebag: dicebag.print_roll(), input_dice)
+    list(map(lambda dicebag: dicebag.print_roll(), input_dice))
     return
 
 if __name__ == "__main__":
